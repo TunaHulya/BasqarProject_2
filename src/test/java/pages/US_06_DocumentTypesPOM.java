@@ -8,109 +8,76 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class US_06_DocumentTypesPOM extends Parent {
+
     WebElement myElement;
 
     public US_06_DocumentTypesPOM() {
-
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "//span[text()='Setup']") private WebElement setup;
+    @FindBy(xpath = "//span[text()='Parameters']") private WebElement parameters;
+    @FindBy(xpath = "//span[text()='Document Types'])[2]") private WebElement documentTypes;   //   linkText = "Countries"  // linkText de scroll yapmiyor
+    @FindBy(xpath = "//span[text()='Cities']") private WebElement cities;
+
+    @FindBy(xpath = "//span[text()='Education']") private WebElement education;
+    @FindBy(xpath = "(//span[text()='Setup'])[5]") private WebElement setupEducation;
+    @FindBy(css = "a[href='/subject-categories/list']") private WebElement subjectCategories;   //   linkText = "Subject Categories"
+    //    @FindBy(linkText = "Subject Categories") private WebElement subjectCategories;   //   linkText = "Subject Categories"
+    @FindBy(xpath = "//span[text()='Subjects']") private WebElement subjects;
+
+    @FindBy(xpath = "//span[text()='Human Resources']") private WebElement humanResources;
+    @FindBy(xpath = "(//span[text()='Setup'])[3]") private WebElement setupHR;
+    @FindBy(xpath = "//span[text()='Position Salary']") private WebElement positionSalary;
+    @FindBy(xpath = "//span[text()='Positions']") private WebElement positions;
+
+    @FindBy(xpath = "//span[text()='Salary Types']") private WebElement salaryTypes;
+    @FindBy(xpath = "//span[text()='Salary Modifiers']") private WebElement salaryModifiers;
+    @FindBy(xpath = "//span[text()='Salary Constants']") private WebElement salaryConstants;
+
+    @FindBy(xpath = "(//span[text()='Reports'])[4]") private WebElement reports;
+    @FindBy(xpath = "(//span[text()='Setup'])[7]") private WebElement setupReports;
+    @FindBy(xpath = "//span[text()='Excel Template']") private WebElement excelTemplate;
+
+    @FindBy(xpath = "//span[text()='Budget']") private WebElement budget;
+    @FindBy(xpath = "//span[text()='Budget Accounts']") private WebElement budgetAccounts;
+    @FindBy(xpath = "(//span[text()='Setup'])[6]") private WebElement setupBudget;
+    @FindBy(xpath = "//span[text()='Cost Centers']") private WebElement costCenters;
 
 
-    @FindBy(xpath = "(//span[text()='Dashboard'])[1]")
-    private WebElement dashboard;
-
-    @FindBy(xpath = "(//span[text()='Setup'])[1]")
-    private WebElement setupOne;
-
-    @FindBy(xpath = "//span[text()='Parameters']")
-    private WebElement parameters;
-
-    @FindBy(xpath = "//span[text()='Document Types']")
-    private WebElement documentTypes;
-
-    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'TITLE.ADD')]//button")
-    private WebElement addButton;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']/input")
-    private WebElement nameBox;
-
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='code']/input")
-    private WebElement codeInput;
-
-    @FindBy(xpath = "//ms-save-button//button")
-    private WebElement saveButton;
-
-    @FindBy(xpath = "//div[@id='toast-container']")
-    private WebElement displayedMessage;
-
-    @FindAll({
-            @FindBy(xpath = "//div[@id='mat-select-8-panel']")
-    })
-    private List<WebElement> stageSelect;
+    //   //button[@aria-label='Close dialog']
 
 
     public void findElementAndClickFunction(String elementName) {
 
         switch (elementName) {
-
-            case "setupOne":
-                myElement = setupOne;
-                break;
-
-                case "dashboard":
-                myElement = dashboard;
-                break;
-
-            case "parameters":
-                myElement = parameters;
-                break;
-
-            case "country":
-                myElement = documentTypes;
-                break;
-
-
-                 case "displayedMessage":
-                myElement = displayedMessage;
-                break;
-
-                case "addButton":
-                myElement = addButton;
-                break;
+            case "setup": myElement = setup;break;
+            case "parameters": myElement = parameters;break;
+            case "documentTypes": myElement = documentTypes;break;
+            case "cities": myElement = cities;break;
+            case "education": myElement = education;break;
+            case "setupEducation": myElement = setupEducation;break;
+            case "subjectCategories": myElement = subjectCategories;break;
+            case "subjects": myElement = subjects;break;
+            case "humanResources": myElement = humanResources;break;
+            case "setupHR": myElement = setupHR;break;
+            case "positionSalary": myElement = positionSalary;break;
+            case "positions": myElement = positions;break;
+            case "reports": myElement = reports;break;
+            case "setupReports": myElement = setupReports;break;
+            case "excelTemplate": myElement = excelTemplate;break;
+            case "salaryTypes": myElement = salaryTypes;break;
+            case "salaryModifiers": myElement = salaryModifiers;break;
+            case "salaryConstants": myElement = salaryConstants;break;
+            case "budget": myElement = budget;break;
+            case "budgetAccounts": myElement = budgetAccounts;break;
+            case "setupBudget": myElement = setupBudget;break;
+            case "costCenters": myElement = costCenters;break;
 
 
-            case "saveButton":
-                myElement = saveButton;
-                break;
         }
-
         clickFunction(myElement);
     }
 
 
-    public void findElementAndSendKeysFunction(String elementName, String value) {
-
-        switch (elementName) {
-            case "nameBox":
-                myElement = nameBox;
-                break;
-            case "codeInput":
-                myElement = codeInput;
-                break;
-        }
-
-        sendKeysFunction(myElement, value);
-    }
-
-
-    public void findElementAndFindVerifyContainsText(String elementName, String text) {
-        switch (elementName) {
-            case "dashboard":
-                myElement = dashboard;
-                break;
-        }
-
-        verifyElementContainsText(myElement, text);
-    }
 }

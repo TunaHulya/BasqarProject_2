@@ -1,27 +1,43 @@
 package stepDefinitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
-import pages.US_06_DocumentTypesPOM;
+import org.openqa.selenium.WebDriver;
 
-public class US_06_DocumentTypesSteps {
-
-    US_06_DocumentTypesPOM documentTypesPOM= new US_06_DocumentTypesPOM();
+import pages.DialogContent;
+import pages.Parent;
 
 
-    @When("^User click on the element in the DocumentTypesPOM$")
-    public void userClickOnTheElementInTheDocumentTypesPOM() {
-        documentTypesPOM.findElementAndClickFunction("setupOne");
-        documentTypesPOM.findElementAndClickFunction("parameters");
-        documentTypesPOM.findElementAndClickFunction("documentTypes");
+
+public class US_06_DocumentTypesSteps extends Parent {
+
+   WebDriver driver;
+
+
+   DialogContent dialogContent=new DialogContent();
+
+
+    @And("^Navigate to Document Types page$")
+    public void navigateToDocumentTypesPage() {
+        dialogContent.findElementAndClickFunction("setup");
+        dialogContent.findElementAndClickFunction("parameters");
+        dialogContent.findElementAndClickFunction("documentTypes");
     }
 
     @Then("^User should view Document Types Page successfully$")
     public void userShouldViewDocumentTypesPageSuccessfully() {
-
-
     }
 
+    @When("^User click on the element in the DocumentTypesPOM class$")
+    public void userClickOnTheElementInTheDocumentTypesPOMClass() {
+    }
 
+    @And("^User sending the keys in the DocumentTypesPOM class$")
+    public void userSendingTheKeysInTheDocumentTypesPOMClass() {
+    }
+
+    @Then("^User should create a Document successfully$")
+    public void userShouldCreateADocumentSuccessfully() {
+    }
 }

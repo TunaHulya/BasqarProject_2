@@ -40,6 +40,8 @@ public class LoginSteps {
             dialogContent.findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0),elementsNameAndValue.get(i).get(1));
         }
 
+
+
     }
 
     @And("^User click on the element in the dialog content class$")
@@ -60,4 +62,7 @@ public class LoginSteps {
         dialogContent.findElementAndFindVerifyContainsText("dashboard","Dashboard");
 
     }
+
+
+
 }

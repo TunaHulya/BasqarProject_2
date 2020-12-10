@@ -1,4 +1,4 @@
-Feature: Document Types Page View Functionality
+Feature: Document Types Page Create Functionality
 
   Background:
 
@@ -11,15 +11,18 @@ Feature: Document Types Page View Functionality
       | gotItButton |
     Then User should login successfully
 
-  Scenario:  Login with valid username and password then view the Document Types Page
+  Scenario:  Login with valid username and password then create a document
 
-    When User click on the element in the DocumentTypesPOM class
+
+    And Navigate to Document Types page
       | setup |
       | parameters |
       | documentTypes |
-      | addDocument |
-    And User sending the keys in the DocumentTypesPOM class
 
+    When User click on the element in the dialog content class class
+      | addDocument|
+
+    And User sending the keys in the dialog content class
       | nameBox | eakdocument |
 
     When User click on the element in the DocumentTypesPOM class

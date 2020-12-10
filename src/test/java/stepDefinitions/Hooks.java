@@ -14,43 +14,42 @@ import java.util.Date;
 public class Hooks {
 
     @Before
-    public void before(Scenario scenario)
-    {
-        System.out.println("Scenario:"+scenario.getName()+" has been started");
+    public void before(Scenario scenario){
+        System.out.println(scenario.getName() + " has been started.");
+
     }
 
+
     @After
-    public void after(Scenario scenario)
-    {
+    public void after(Scenario scenario){
+
         System.out.println(scenario.getName() + " : " + scenario.getStatus());
 
-        Date now=new Date();
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
-        String strDate=formatter.format(now);
-        System.out.println(strDate);
+        Date now = new Date();
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH mm ss");
+        String strDate = formater.format(now);
 
-        if (scenario.getStatus() == "failed")
-        {
-            String scenarioName=scenario.getName();
+        if (scenario.getStatus() == "failed"){
 
-            TakesScreenshot ts= (TakesScreenshot) Driver.getDriver();
-            File ekranDosyasi = ts.getScreenshotAs(OutputType.FILE);
+            String scenarioName = scenario.getName();
+            strDate = strDate.replace(":","");
+
+            TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+            File screenshot = ts.getScreenshotAs(OutputType.FILE);
 
             try {
-                FileUtils.copyFile(ekranDosyasi, new File("target/FailedScreenShots/"+
-                                          Driver.threadBrowserName.get()+scenarioName+strDate+".png"));
-            } catch (IOException e) {
+                FileUtils.copyFile(screenshot, new File("target/FailedScreenShots/"
+                        + Driver.threadBrowserName.get()+ "_" + scenarioName+ "_" + strDate + ".png"));
+            }catch (IOException e){
                 e.printStackTrace();
             }
+
         }
-
-
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         Driver.quitDriver();
     }
 }

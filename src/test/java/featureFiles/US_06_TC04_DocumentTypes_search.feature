@@ -1,4 +1,4 @@
-Feature: Document Types Page Edit Functionality
+Feature: Document Types Page Search Functionality
 
   Background:
 
@@ -11,19 +11,14 @@ Feature: Document Types Page Edit Functionality
       | gotItButton |
     Then User should login successfully
 
-  Scenario:  Login with valid username and password then edit a document
+  Scenario: When searching by  name, the results should be matched with the search key.
 
     When User click on the element in the DocumentTypesPOM class
       | setup |
       | parameters |
       | documentTypes |
-      | edit|
     And User sending the keys in the DocumentTypesPOM class
 
-      | nameBox | AKGeakdocument |
+      | nameBox | eakdocument |
 
-    When User click on the element in the DocumentTypesPOM class
-      | stageSelect |
-      | saveButton |
-
-    Then User should create a Document successfully
+    Then Search and result should be matched
